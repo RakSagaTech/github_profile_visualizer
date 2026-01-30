@@ -30,7 +30,7 @@ const menuOptionsList = [
 
 class Home extends Component {
   state = {
-    apiStatus: apiStatusConstants.sucess,
+    apiStatus: apiStatusConstants.initial,
     username: '',
     profileDetails: {},
     showErrMsg: false,
