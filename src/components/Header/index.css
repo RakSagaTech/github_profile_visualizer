@@ -10,6 +10,12 @@
   padding: 16px 24px;
 }
 
+@media screen and (min-width: 576px) {
+  .title-and-menu {
+    padding: 16px 40px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .title-and-menu {
     padding: 32px 50px;
@@ -82,6 +88,11 @@
   width: 100%;
   padding: 0px 24px;
 }
+@media screen and (min-width: 576px) {
+  .menu-list-container-sm {
+    padding: 0px 30px;
+  }
+}
 
 @media screen and (min-width: 768px) {
   .menu-list-container-sm {
@@ -122,14 +133,14 @@
   padding: 0px;
 }
 
-@media screen and (min-width: 768px){
-  .menu-item{
+@media screen and (min-width: 768px) {
+  .menu-item {
     font-size: 18px;
   }
 }
 
-@media screen and (min-width: 992px){
-  .menu-item{
+@media screen and (min-width: 992px) {
+  .menu-item {
     font-size: 20px;
   }
 }
@@ -145,3 +156,5 @@
     margin-bottom: 0px;
   }
 }
+
+

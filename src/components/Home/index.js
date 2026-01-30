@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {HiOutlineSearch} from 'react-icons/hi'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
+import Profile from '../Profile'
 
 import './index.css'
 
@@ -29,21 +30,30 @@ const menuOptionsList = [
 
 class Home extends Component {
   state = {
-    apiStatus: apiStatusConstants.success,
+    apiStatus: apiStatusConstants.initial,
     username: '',
     profileDetails: {},
     showErrMsg: false,
-    showMenuOptions: true,
+    showMenuOptions: false,
     activeMenuId: menuOptionsList[0].labelId,
   }
 
+  apiKey = process.env.REACT_APP_GITHUB_API_KEY
+
   fetchProfileData = async () => {
+    const {username} = this.state
+
+    if (username.trim() === '') {
+      this.setState({showErrMsg: true})
+      return
+    }
+
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const {username} = this.state
-    const apiKey = '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'
+    const apiKey = process.env.REACT_APP_GITHUB_API_KEY
+
     const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=${apiKey}`
     const options = {
       method: 'GET',
@@ -53,6 +63,7 @@ class Home extends Component {
       const response = await fetch(apiUrl, options)
       if (response.ok) {
         const data = await response.json()
+        console.log(data)
         const formattedData = {
           avatarUrl: data.avatar_url,
           bio: data.bio,
@@ -90,20 +101,27 @@ class Home extends Component {
         this.setState({
           profileDetails: formattedData,
           apiStatus: apiStatusConstants.success,
-          username: '',
         })
       } else {
         this.setState({
           apiStatus: apiStatusConstants.failure,
+          showErrMsg: true,
           username: '',
         })
       }
     } catch {
       this.setState({
         apiStatus: apiStatusConstants.failure,
+        showErrMsg: true,
         username: '',
       })
     }
+  }
+
+  updateActiveMenuId = id => {
+    this.setState({
+      activeMenuId: id,
+    })
   }
 
   updateShowMenuOptions = () => {
@@ -112,14 +130,23 @@ class Home extends Component {
     }))
   }
 
+  onClickTry = () => {
+    this.setState({showErrMsg: false}, this.fetchProfileData)
+  }
+
   onClickSearch = () => {
+    const {username} = this.state
+    if (username.trim() === '') {
+      this.setState({showErrMsg: true})
+      return
+    }
     this.fetchProfileData()
   }
 
   onChangeSearch = event => {
-    const {value} = event.target
     this.setState({
-      username: value,
+      username: event.target.value,
+      showErrMsg: false,
     })
   }
 
@@ -154,14 +181,18 @@ class Home extends Component {
   renderProfilePageView = () => {
     const {profileDetails, showMenuOptions, activeMenuId} = this.state
     return (
-      <div className="profile-container">
+      <>
         <Header
           menuOptionsList={menuOptionsList}
           showMenuOptions={showMenuOptions}
           activeMenuId={activeMenuId}
           updateShowMenuOptions={this.updateShowMenuOptions}
+          updateActiveMenuId={this.updateActiveMenuId}
         />
-      </div>
+        <div className="profile-container">
+          <Profile profileDetails={profileDetails} />
+        </div>
+      </>
     )
   }
 
@@ -182,7 +213,7 @@ class Home extends Component {
           className="failure-page_img "
         />
         <p className="something-went">Something went wrong. Please try again</p>
-        <button type="button" className="try-btn">
+        <button type="button" className="try-btn" onClick={this.onClickTry}>
           Try again
         </button>
       </div>

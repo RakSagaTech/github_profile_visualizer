@@ -6,7 +6,12 @@ const Header = props => {
     showMenuOptions,
     activeMenuId,
     updateShowMenuOptions,
+    updateActiveMenuId,
   } = props
+
+  const onClickMenu = labelId => {
+    updateActiveMenuId(labelId)
+  }
 
   const onClickHambergur = () => {
     updateShowMenuOptions()
@@ -20,8 +25,12 @@ const Header = props => {
             ? 'active menu-item'
             : 'not-active menu-item'
         return (
-          <li key={eachMenu.ladelId} className="menu">
-            <button type="button" className={menuOptionClass}>
+          <li key={eachMenu.labelId} className="menu">
+            <button
+              type="button"
+              className={menuOptionClass}
+              onClick={() => onClickMenu(eachMenu.labelId)}
+            >
               {eachMenu.menu}
             </button>
           </li>
