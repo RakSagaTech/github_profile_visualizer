@@ -53,7 +53,7 @@ class Home extends Component {
     })
 
 
-    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?
+    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}`
     const options = {
       method: 'GET',
     }
