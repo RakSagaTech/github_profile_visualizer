@@ -35,7 +35,7 @@ class Home extends Component {
     profileDetails: {},
     showErrMsg: false,
     showMenuOptions: false,
-    activeMenuId: menuOptionsList[0].labelId,
+    activeMenuId: menuOptionsList[0],
   }
 
   apiKey = process.env.REACT_APP_GITHUB_API_KEY
