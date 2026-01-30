@@ -52,9 +52,8 @@ class Home extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const apiKey = process.env.REACT_APP_GITHUB_API_KEY
 
-    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=${apiKey}`
+    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?
     const options = {
       method: 'GET',
     }
