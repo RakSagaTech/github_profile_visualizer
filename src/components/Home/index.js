@@ -52,7 +52,6 @@ class Home extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
 
-
     const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}`
     const options = {
       method: 'GET',
