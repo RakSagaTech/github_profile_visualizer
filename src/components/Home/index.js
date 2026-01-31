@@ -30,15 +30,13 @@ const menuOptionsList = [
 
 class Home extends Component {
   state = {
-    apiStatus: apiStatusConstants.sucess,
+    apiStatus: apiStatusConstants.initial,
     username: '',
     profileDetails: {},
     showErrMsg: false,
     showMenuOptions: false,
     activeMenuId: menuOptionsList[0],
   }
-
-  apiKey = process.env.REACT_APP_GITHUB_API_KEY
 
   fetchProfileData = async () => {
     const {username} = this.state
@@ -52,7 +50,9 @@ class Home extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}`
+    const apiKey = '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'
+
+    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=${apiKey}`
     const options = {
       method: 'GET',
     }

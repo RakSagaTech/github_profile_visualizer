@@ -1,0 +1,133 @@
+.repository-card-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #1d2537;
+}
+
+@media screen and (min-width: 576px) {
+  .repository-card-item {
+    padding: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .repository-card-item {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .repository-card-item {
+    padding: 24px;
+  }
+}
+
+.repository-card-title {
+  color: #3b82f6;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  margin: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .repository-card-title {
+    font-size: 24px;
+  }
+}
+
+.repository-card-description {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .repository-card-description {
+    font-size: 16px;
+  }
+}
+
+.repository-card-languages-list {
+  display: flex;
+  align-items: center;
+  padding-left: 0px;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.repository-card-language-item {
+  padding: 8px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .repository-card-language-item {
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 14px;
+  }
+}
+
+.color-1 {
+  color: #e879f9;
+  background-color: #c026d329;
+}
+
+.color-2 {
+  color: #4ade80;
+  background-color: #22c55e29;
+}
+
+.color-3 {
+  color: #38bdf8;
+  background-color: #0284c729;
+}
+
+.color-4 {
+  color: #f472b6;
+  background-color: #db277729;
+}
+
+.color-5 {
+  color: #fbbf24;
+  background-color: #f59e0b29;
+}
+
+.repository-card-stats {
+  display: flex;
+  align-items: center;
+}
+
+.repository-stats-container {
+  display: flex;
+  align-items: center;
+}
+
+.repository-stats-img {
+  height: 16px;
+  width: 16px;
+}
+
+.repository-stats-count {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #ffffff;
+  margin-left: 10px;
+  margin-right: 16px;
+}

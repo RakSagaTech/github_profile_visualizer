@@ -1,6 +1,7 @@
-import Home from './components/Home'
+import Repository from './components/Repository'
+
 import './App.css'
 
-const App = () => <Home />
+const App = () => <Repository />
 
 export default App
