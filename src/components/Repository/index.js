@@ -75,8 +75,7 @@ class Repository extends Component {
 
     const username = this.props
 
-    const apiKey = '*******'
-    const apiUrl = `https://apis2.ccbp.in/gpv/repos/${username}?api_key=${apiKey}`
+    const apiUrl = `https://apis2.ccbp.in/gpv/repos/${username}`
     const options = {
       method: 'GET',
     }

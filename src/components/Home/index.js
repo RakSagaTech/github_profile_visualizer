@@ -50,9 +50,8 @@ class Home extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const apiKey = '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'
+    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}`
 
-    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=${apiKey}`
     const options = {
       method: 'GET',
     }
