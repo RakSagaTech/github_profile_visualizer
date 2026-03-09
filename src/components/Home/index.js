@@ -14,28 +14,51 @@ const apiStatusConstants = {
 class Home extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
+    showErr: false,
   }
 
-  renderSearchInput = () => (
-    <div className="search-container">
-      <input
-        type="search"
-        placeholder="Enter github username"
-        id="searchInput"
-        className="search-input"
-      />
-      <button
-        type="button"
-        aria-label="Github Search Icon"
-        data-testid="searchButton"
-        className="search-btn"
-      >
-        <HiOutlineSearch className="search-icon" />
-      </button>
+  renderSearchInput = () => {
+    const {showErr} = this.state
+    return (
+      <>
+        <div className="search-container">
+          <input
+            type="search"
+            placeholder="Enter github username"
+            id="searchInput"
+            className="search-input"
+          />
+          <button
+            type="button"
+            aria-label="Github Search Icon"
+            data-testid="searchButton"
+            className="search-btn"
+          >
+            <HiOutlineSearch className="search-icon" />
+          </button>
+        </div>
+        {showErr && <p className="err-msg">Enter the valid github username</p>}
+      </>
+    )
+  }
+
+  renderFailurePageView = () => (
+    <div className="landingpage-container">
+      <div className="search-image-container">
+        {this.renderSearchInput()}
+        <h1 className="failure-title">GitHub Profile Visualizer</h1>
+        <img
+          src="https://res.cloudinary.com/degvq1cfc/image/upload/v1769657273/failure_img_sg2agc.png"
+          alt="failure view"
+          className="failure-img"
+        />
+        <p className="something-went">Something went wrong. Please try again</p>
+        <button type="button" className="try-btn">
+          Try again
+        </button>
+      </div>
     </div>
   )
-
-  renderFailurePageView = () => <p>Failure View</p>
 
   renderProfilePageView = () => <p>Profile View</p>
 
@@ -45,21 +68,19 @@ class Home extends Component {
     </div>
   )
 
-  renderLandingPageView = () => {
-    return (
-      <div className="landingpage-container">
-        <div className="search-image-container">
-          {this.renderSearchInput()}
-          <h1 className="home-title">GitHub Profile Visualizer</h1>
-          <img
-            src="https://res.cloudinary.com/degvq1cfc/image/upload/v1769654736/home_img_eaodv3.png"
-            alt="gitHub profile visualizer home page"
-            className="home-image"
-          />
-        </div>
+  renderLandingPageView = () => (
+    <div className="landingpage-container">
+      <div className="search-image-container">
+        {this.renderSearchInput()}
+        <h1 className="home-title">GitHub Profile Visualizer</h1>
+        <img
+          src="https://res.cloudinary.com/degvq1cfc/image/upload/v1769654736/home_img_eaodv3.png"
+          alt="gitHub profile visualizer home page"
+          className="home-image"
+        />
       </div>
-    )
-  }
+    </div>
+  )
 
   renderHomePageView = () => {
     const {apiStatus} = this.state
