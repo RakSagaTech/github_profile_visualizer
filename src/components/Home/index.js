@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {HiOutlineSearch} from 'react-icons/hi'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
+import Profile from '../Profile'
 
 import './index.css'
 
@@ -18,7 +19,7 @@ class Home extends Component {
     showErr: false,
     failurePage: false,
     username: '',
-    profileData: [],
+    profileData: {},
   }
 
   getProfileData = data => ({
@@ -179,7 +180,15 @@ class Home extends Component {
     </div>
   )
 
-  renderProfilePageView = () => <p>Profile View</p>
+  renderProfilePageView = () => {
+    const {profileData} = this.state
+    return (
+      <div className="home-profile-container">
+        <Header />
+        <Profile profileDetails={profileData} />
+      </div>
+    )
+  }
 
   renderLoadingPageView = () => (
     <div className="loader-container" data-testid="loader">
