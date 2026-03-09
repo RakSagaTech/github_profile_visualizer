@@ -74,21 +74,21 @@ const Profile = props => {
       </div>
       <div className="company-location-url">
         <div className="heading-and-icon">
-          <h1 className="stats">Company</h1>
+          <p className="stats">Company</p>
           <div className="icon-and-description">
             <RiBuildingLine className="icon" />
             <p className="profile-description">{company}</p>
           </div>
         </div>
         <div className="heading-and-icon">
-          <h1 className="stats">Location</h1>
+          <p className="stats">Location</p>
           <div className="icon-and-description">
             <IoLocationOutline className="icon" />
             <p className="profile-description">{location}</p>
           </div>
         </div>
         <div className="heading-and-icon">
-          <h1 className="stats">Company Url</h1>
+          <p className="stats">Company Url</p>
           <div className="icon-and-description">
             <a
               href={organizationsUrl}

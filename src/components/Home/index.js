@@ -62,7 +62,7 @@ class Home extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
-    const apiKey = ''
+    const apiKey = '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'
     const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=${apiKey}`
     const options = {
       method: 'GET',
@@ -206,7 +206,7 @@ class Home extends Component {
         <h1 className="home-title">GitHub Profile Visualizer</h1>
         <img
           src="https://res.cloudinary.com/degvq1cfc/image/upload/v1769654736/home_img_eaodv3.png"
-          alt="github profile visualizer home page"
+          alt="gitHub profile visualizer home page"
           className="home-image"
         />
       </div>
