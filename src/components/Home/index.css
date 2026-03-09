@@ -374,3 +374,13 @@
     font-size: 25px;
   }
 }
+
+.home-header {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .home-header {
+    display: block;
+  }
+}

@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {HiOutlineSearch} from 'react-icons/hi'
 import Loader from 'react-loader-spinner'
+import Header from '../Header'
 
 import './index.css'
 
@@ -15,11 +16,48 @@ class Home extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     showErr: false,
+    failurePage: false,
     username: '',
+    profileData: [],
   }
 
+  getProfileData = data => ({
+    avatarUrl: data.avatar_url,
+    bio: data.bio,
+    blog: data.blog,
+    company: data.company,
+    createdAt: data.created_at,
+    email: data.email,
+    eventsUrl: data.events_url,
+    followers: data.followers,
+    followersUrl: data.followers_url,
+    following: data.following,
+    followingUrl: data.following_url,
+    gistsUrl: data.gists_url,
+    gravatarId: data.gravatar_id,
+    hireable: data.hireable,
+    htmlUrl: data.html_url,
+    id: data.id,
+    location: data.location,
+    login: data.login,
+    name: data.name,
+    nodeId: data.node_id,
+    organizationsUrl: data.organizations_url,
+    publicGists: data.public_gists,
+    publicRepos: data.public_repos,
+    receivedEventsUrl: data.received_events_url,
+    reposUrl: data.repos_url,
+    siteAdmin: data.site_admin,
+    starredUrl: data.starred_url,
+    subscriptionsUrl: data.subscriptions_url,
+    twitterUsername: data.twitter_username,
+    type: data.type,
+    updatedAt: data.updated_at,
+    url: data.url,
+  })
+
   fetchProfileData = async () => {
-    const username = localStorage.getItem('username')
+    const {username} = this.state
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
@@ -33,13 +71,17 @@ class Home extends Component {
       const response = await fetch(apiUrl, options)
       if (response.ok) {
         const data = await response.json()
+        const formattedData = this.getProfileData(data)
         this.setState({
           apiStatus: apiStatusConstants.success,
+          profileData: formattedData,
         })
+        localStorage.setItem('username', username)
       } else {
         this.setState({
           apiStatus: apiStatusConstants.failure,
           showErr: true,
+          failurePage: true,
           username: '',
         })
         localStorage.removeItem('username')
@@ -48,6 +90,7 @@ class Home extends Component {
       this.setState({
         apiStatus: apiStatusConstants.failure,
         showErr: true,
+        failurePage: true,
         username: '',
       })
       localStorage.removeItem('username')
@@ -55,16 +98,12 @@ class Home extends Component {
   }
 
   onClickTryAgain = () => {
-    const {username} = this.state
-    if (username.trim() === '') {
-      this.setState({
-        apiStatus: apiStatusConstants.failure,
-        showErr: true,
-      })
-    } else {
-      localStorage.setItem('username', username)
-      this.fetchProfileData()
-    }
+    this.setState(
+      {
+        failurePage: false,
+      },
+      this.fetchProfileData,
+    )
   }
 
   onClickSearch = () => {
@@ -75,7 +114,6 @@ class Home extends Component {
         showErr: true,
       })
     } else {
-      localStorage.setItem('username', username)
       this.fetchProfileData()
     }
   }
@@ -87,7 +125,7 @@ class Home extends Component {
   }
 
   renderSearchInput = () => {
-    const {showErr, username} = this.state
+    const {showErr, username, failurePage} = this.state
     const inputClass = showErr ? 'search-input search-failure' : 'search-input'
     return (
       <>
@@ -106,6 +144,7 @@ class Home extends Component {
             data-testid="searchButton"
             className="search-btn"
             onClick={this.onClickSearch}
+            disabled={failurePage}
           >
             <HiOutlineSearch className="search-icon" />
           </button>
@@ -117,6 +156,9 @@ class Home extends Component {
 
   renderFailurePageView = () => (
     <div className="landingpage-container">
+      <div className="home-header">
+        <Header />
+      </div>
       <div className="search-image-container">
         {this.renderSearchInput()}
         <h1 className="failure-title">GitHub Profile Visualizer</h1>
@@ -147,6 +189,9 @@ class Home extends Component {
 
   renderLandingPageView = () => (
     <div className="landingpage-container">
+      <div className="home-header">
+        <Header />
+      </div>
       <div className="search-image-container">
         {this.renderSearchInput()}
         <h1 className="home-title">GitHub Profile Visualizer</h1>
