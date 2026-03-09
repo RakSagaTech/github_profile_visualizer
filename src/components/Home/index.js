@@ -15,10 +15,80 @@ class Home extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     showErr: false,
+    username: '',
+  }
+
+  fetchProfileData = async () => {
+    const username = localStorage.getItem('username')
+    this.setState({
+      apiStatus: apiStatusConstants.inProgress,
+    })
+    const apiKey = ''
+    const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=${apiKey}`
+    const options = {
+      method: 'GET',
+    }
+
+    try {
+      const response = await fetch(apiUrl, options)
+      if (response.ok) {
+        const data = await response.json()
+        this.setState({
+          apiStatus: apiStatusConstants.success,
+        })
+      } else {
+        this.setState({
+          apiStatus: apiStatusConstants.failure,
+          showErr: true,
+          username: '',
+        })
+        localStorage.removeItem('username')
+      }
+    } catch (err) {
+      this.setState({
+        apiStatus: apiStatusConstants.failure,
+        showErr: true,
+        username: '',
+      })
+      localStorage.removeItem('username')
+    }
+  }
+
+  onClickTryAgain = () => {
+    const {username} = this.state
+    if (username.trim() === '') {
+      this.setState({
+        apiStatus: apiStatusConstants.failure,
+        showErr: true,
+      })
+    } else {
+      localStorage.setItem('username', username)
+      this.fetchProfileData()
+    }
+  }
+
+  onClickSearch = () => {
+    const {username} = this.state
+    if (username.trim() === '') {
+      this.setState({
+        apiStatus: apiStatusConstants.failure,
+        showErr: true,
+      })
+    } else {
+      localStorage.setItem('username', username)
+      this.fetchProfileData()
+    }
+  }
+
+  onChangeSearchInput = event => {
+    this.setState({
+      username: event.target.value,
+    })
   }
 
   renderSearchInput = () => {
-    const {showErr} = this.state
+    const {showErr, username} = this.state
+    const inputClass = showErr ? 'search-input search-failure' : 'search-input'
     return (
       <>
         <div className="search-container">
@@ -26,13 +96,16 @@ class Home extends Component {
             type="search"
             placeholder="Enter github username"
             id="searchInput"
-            className="search-input"
+            className={inputClass}
+            onChange={this.onChangeSearchInput}
+            value={username}
           />
           <button
             type="button"
             aria-label="Github Search Icon"
             data-testid="searchButton"
             className="search-btn"
+            onClick={this.onClickSearch}
           >
             <HiOutlineSearch className="search-icon" />
           </button>
@@ -53,7 +126,11 @@ class Home extends Component {
           className="failure-img"
         />
         <p className="something-went">Something went wrong. Please try again</p>
-        <button type="button" className="try-btn">
+        <button
+          type="button"
+          className="try-btn"
+          onClick={this.onClickTryAgain}
+        >
           Try again
         </button>
       </div>
@@ -75,7 +152,7 @@ class Home extends Component {
         <h1 className="home-title">GitHub Profile Visualizer</h1>
         <img
           src="https://res.cloudinary.com/degvq1cfc/image/upload/v1769654736/home_img_eaodv3.png"
-          alt="gitHub profile visualizer home page"
+          alt="github profile visualizer home page"
           className="home-image"
         />
       </div>
