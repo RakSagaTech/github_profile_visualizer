@@ -54,7 +54,6 @@ class Repositories extends Component {
           forksCount: eachData.forks_count,
           name: eachData.name,
           stargazersCount: eachData.stargazers_count,
-          watchersCount: eachData.watchers_count,
           id: eachData.id,
           owner: this.getOwnerDetails(eachData.owner),
           languages: this.getLanguages(eachData.languages),
