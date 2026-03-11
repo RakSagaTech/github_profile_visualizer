@@ -1,7 +1,8 @@
 import {Component} from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Home from './components/Home'
 import Repositories from './components/Repositories'
+import NotFound from './components/NotFound'
 import HeaderContext from './context/HeaderContext'
 import './App.css'
 
@@ -28,6 +29,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/repositories" component={Repositories} />
+          <Route exact path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
         </Switch>
       </HeaderContext.Provider>
     )

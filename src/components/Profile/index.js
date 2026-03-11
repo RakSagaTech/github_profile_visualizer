@@ -52,9 +52,8 @@ const Profile = props => {
         <h1 className="profile-name">{name}</h1>
         <p className="profile-login">{login}</p>
         <p className="profile-title">BIO</p>
-        <p className="profile-bio">{bio}</p>
-        <p className="profile-title">Blog</p>
         <p className="profile-bio">{blog}</p>
+        <p className="profile-bio">{bio}</p>
       </div>
       <div className="profile-stats-container">
         <div className="stats-container">

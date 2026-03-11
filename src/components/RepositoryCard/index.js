@@ -17,14 +17,10 @@ const RepositoryCard = props => {
     name,
     description,
     languages,
-    owner,
     stargazersCount,
-    watchersCount,
     forksCount,
   } = repositoriesDetails
-  const {avatarUrl, login} = owner
-
-  const renderLanguagesList = () => {
+  const renderLanguagesList = () =>
     languages.map((eachLanguage, index) => (
       <li
         key={eachLanguage.name}
@@ -34,18 +30,14 @@ const RepositoryCard = props => {
         }}
         className="repository-card-language-item"
       >
-        {eachLanguage.name}
+        <p>{eachLanguage.name}</p>
       </li>
     ))
-  }
 
   return (
     <li className="repository-card-item ">
       <Link to={`/repositories/${name}`} className="repository-link">
-        <div className="repository-card-title-image">
-          <img src={avatarUrl} alt={login} className="repository-avatar" />
-          <h1 className="repository-card-title">{name}</h1>
-        </div>
+        <h1>{name}</h1>
         <p className="repository-card-description">{description}</p>
         <ul className="repository-card-languages-list">
           {renderLanguagesList()}
@@ -66,10 +58,6 @@ const RepositoryCard = props => {
               className="repository-stats-img"
             />
             <p className="repository-stats-count">{forksCount}</p>
-          </div>
-          <div className="repository-stats-container">
-            <h1 className="watchers-count">Watchers Count</h1>
-            <p className="repository-stats-count">{watchersCount}</p>
           </div>
         </div>
       </Link>

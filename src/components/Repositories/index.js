@@ -35,11 +35,12 @@ class Repositories extends Component {
 
   fetchRepositoriesData = async () => {
     const username = localStorage.getItem('username')
+
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
 
-    const apiKey = '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'
+    const apiKey = ''
     const apiUrl = `https://apis2.ccbp.in/gpv/repos/${username}?api_key=${apiKey}`
     const options = {
       method: 'GET',
@@ -53,7 +54,6 @@ class Repositories extends Component {
           forksCount: eachData.forks_count,
           name: eachData.name,
           stargazersCount: eachData.stargazers_count,
-          watchers: eachData.watchers,
           watchersCount: eachData.watchers_count,
           id: eachData.id,
           owner: this.getOwnerDetails(eachData.owner),
@@ -94,7 +94,9 @@ class Repositories extends Component {
           Repositories
         </p>
         <Link to="/" className="nav-link">
-          <p className="go-home">Go to Home</p>
+          <button type="button" className="go-home">
+            Go to Home
+          </button>
         </Link>
       </div>
     </div>
@@ -142,11 +144,20 @@ class Repositories extends Component {
     if (repositoriesList.length === 0) {
       return this.renderEmptyRepositoryView()
     }
+
+    const {owner} = repositoriesList[0]
+    const {avatarUrl, login} = owner
     return (
       <div className="heading-and-repositories">
         <Header />
         <div className="heading-repositories">
-          <h1 className="repositories-heading">Repositories</h1>
+          <div className="heading-login-avatar">
+            <h1 className="repositories-heading">Repositories</h1>
+            <div className="login-and-avatar">
+              <img src={avatarUrl} alt={login} className="repository-avatar" />
+              <h1>{login}</h1>
+            </div>
+          </div>
           <ul className="repositories-list">
             {repositoriesList.map(eachRepository => (
               <RepositoryCard
@@ -182,8 +193,7 @@ class Repositories extends Component {
 
   render() {
     const username = localStorage.getItem('username')
-    console.log(username)
-    if (username === '' || username === null || username === undefined) {
+    if (username === null || username === undefined) {
       return this.renderNoRepositoriesDataView()
     }
     return (

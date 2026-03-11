@@ -62,7 +62,7 @@ class Home extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
-    const apiKey = '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'
+    const apiKey = ''
     const apiUrl = `https://apis2.ccbp.in/gpv/profile-details/${username}?api_key=${apiKey}`
     const options = {
       method: 'GET',
@@ -77,7 +77,6 @@ class Home extends Component {
           apiStatus: apiStatusConstants.success,
           profileData: formattedData,
         })
-        localStorage.setItem('username', username)
       } else {
         this.setState({
           apiStatus: apiStatusConstants.failure,
@@ -85,7 +84,6 @@ class Home extends Component {
           failurePage: true,
           username: '',
         })
-        localStorage.removeItem('username')
       }
     } catch (err) {
       this.setState({
@@ -94,7 +92,6 @@ class Home extends Component {
         failurePage: true,
         username: '',
       })
-      localStorage.removeItem('username')
     }
   }
 
@@ -115,6 +112,7 @@ class Home extends Component {
         showErr: true,
       })
     } else {
+      localStorage.setItem('username', username)
       this.fetchProfileData()
     }
   }
