@@ -1,0 +1,36 @@
+import {PieChart, Pie, Cell, Legend} from 'recharts'
+
+const COLORS = ['#54CA76', '#31A4E6', '#F5C452', '#F2637F', '#9261F3']
+
+const LanguagePieChart = props => {
+  const {analysisData} = props
+  const {langRepoCount} = analysisData
+  const langRepoArray = Object.entries(
+    langRepoCount,
+  ).map(([language, count]) => ({language, count}))
+  return (
+    <PieChart width={400} height={300}>
+      <Pie
+        data={langRepoArray}
+        outerRadius={100}
+        innerRadius={58}
+        dataKey="count"
+        nameKey="language"
+        cx={100}
+      >
+        {langRepoArray.map((entry, index) => (
+          <Cell key={entry.language} fill={COLORS[index % COLORS.length]} />
+        ))}
+      </Pie>
+      <Legend
+        layout="vertical"
+        align="right"
+        verticalAlign="middle"
+        wrapperStyle={{right: 20}}
+        itemStyle={{marginBottom: '20px'}}
+        iconSize={18}
+      />
+    </PieChart>
+  )
+}
+export default LanguagePieChart

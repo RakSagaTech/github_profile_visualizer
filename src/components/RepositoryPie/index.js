@@ -4,7 +4,6 @@ const COLORS = ['#54CA76', '#31A4E6', '#F5C452', '#F2637F', '#9261F3']
 
 const RepositoryPie = props => {
   const {languages} = props
-  console.log(languages)
   return (
     <PieChart width={400} height={300}>
       <Pie
@@ -23,7 +22,6 @@ const RepositoryPie = props => {
         align="right"
         verticalAlign="middle"
         wrapperStyle={{right: 60}}
-        itemStyle={{marginBottom: '10px'}}
         iconSize={14}
       />
     </PieChart>

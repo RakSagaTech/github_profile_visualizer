@@ -88,7 +88,7 @@ const Profile = props => {
           </div>
         </div>
         <div className="heading-and-icon">
-          <p className="stats">Company Url</p>
+          <p className="stats">Organization Url</p>
           <div className="icon-and-description">
             <a
               href={organizationsUrl}
