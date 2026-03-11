@@ -5,21 +5,20 @@ const COLORS = ['#54CA76', '#31A4E6', '#F5C452', '#F2637F', '#9261F3']
 const CommitPieChart = props => {
   const {analysisData} = props
   const {langCommitCount} = analysisData
-  const langRepoArray = Object.entries(
+  const langCommitData = Object.entries(
     langCommitCount,
   ).map(([language, count]) => ({language, count}))
-  console.log(langRepoArray)
   return (
     <PieChart width={400} height={300}>
       <Pie
-        data={langRepoArray}
+        data={langCommitData}
         outerRadius={100}
         innerRadius={58}
         dataKey="count"
         nameKey="language"
         cx={100}
       >
-        {langRepoArray.map((entry, index) => (
+        {langCommitData.map((entry, index) => (
           <Cell key={entry.language} fill={COLORS[index % COLORS.length]} />
         ))}
       </Pie>

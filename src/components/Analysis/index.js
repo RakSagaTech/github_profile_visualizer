@@ -5,6 +5,7 @@ import Header from '../Header'
 import LinearChart from '../LinearChart'
 import LanguagePieChart from '../LanguagePieChart'
 import CommitPieChart from '../CommitPieChart'
+import CommitRepoPie from '../CommitRepoPie'
 
 import './index.css'
 
@@ -135,7 +136,7 @@ class Analysis extends Component {
             <h1 className="analysis-heading">Analysis</h1>
             <div className="login-and-avatar">
               <img src={avatarUrl} alt={login} className="repository-avatar" />
-              <h1>{login}</h1>
+              <h1 className="analysis-login">{login}</h1>
             </div>
           </div>
           <LinearChart analysisData={analysisData} />
@@ -149,6 +150,8 @@ class Analysis extends Component {
               <CommitPieChart analysisData={analysisData} />
             </div>
           </div>
+          <h1 className="commit-heading">Commits Per Repo</h1>
+          <CommitRepoPie analysisData={analysisData} />
         </div>
       </div>
     )

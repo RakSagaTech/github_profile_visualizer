@@ -154,7 +154,7 @@ class Repositories extends Component {
             <h1 className="repositories-heading">Repositories</h1>
             <div className="login-and-avatar">
               <img src={avatarUrl} alt={login} className="repository-avatar" />
-              <h1>{login}</h1>
+              <h1 className="repositories-login">{login}</h1>
             </div>
           </div>
           <ul className="repositories-list">

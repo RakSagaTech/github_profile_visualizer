@@ -7,6 +7,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: #1d2537;
+  min-height: 250px;
 }
 
 @media screen and (min-width: 576px) {
@@ -138,4 +139,18 @@
 .watchers-count {
   font-size: 16px;
   color: #94a3b8;
+}
+
+.respository-name {
+  color: #3b82f6;
+  margin-top: 0px;
+  font-weight: 700;
+  font-size: 24px;
+  font-family: 'Roboto';
+}
+
+@media screen and (min-width: 768px) {
+  .respository-name {
+    font-size: 34px;
+  }
 }

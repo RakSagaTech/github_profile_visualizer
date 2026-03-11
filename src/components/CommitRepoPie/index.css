@@ -1,0 +1,54 @@
+.repo-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .repo-container {
+    flex-direction: row;
+    width: 50%;
+  }
+}
+
+.pie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .pie-container {
+    width: 50%;
+  }
+}
+
+.remo-commit-list {
+  list-style-type: square;
+  flex-grow: 1;
+  padding-left: 0px;
+  margin-top: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .remo-commit-list {
+    margin-top: 20px;
+  }
+}
+
+
+.repo-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  color: var(--repo-color); 
+}
+
+.color-box {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 8px;
+  border-radius: 2px;
+  background-color: var(--repo-color); 
+}

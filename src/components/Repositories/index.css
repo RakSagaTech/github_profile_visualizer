@@ -129,7 +129,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   margin: 0px 24px 24px 24px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 576px) {
@@ -276,4 +276,16 @@
 .login-and-avatar {
   display: flex;
   align-items: center;
+}
+
+.repositories-login {
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .repositories-login {
+    font-size: 24px;
+  }
 }

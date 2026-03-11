@@ -288,15 +288,27 @@ analysis-failure {
   align-items: flex-start;
 }
 
-.commit-heading{
-  color: #F8FAFC;
+.commit-heading {
+  color: #f8fafc;
   font-size: 20px;
   font-weight: 700;
-  font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
-@media screen and (min-width: 768px){
-  .commit-heading{
+@media screen and (min-width: 768px) {
+  .commit-heading {
     font-size: 32px;
+  }
+}
+
+.analysis-login {
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .analysis-login {
+    font-size: 24px;
   }
 }

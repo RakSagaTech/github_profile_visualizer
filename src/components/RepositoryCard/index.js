@@ -35,9 +35,9 @@ const RepositoryCard = props => {
     ))
 
   return (
-    <li className="repository-card-item ">
+    <li className="repository-card-item">
       <Link to={`/repositories/${name}`} className="repository-link">
-        <h1>{name}</h1>
+        <h1 className="respository-name">{name}</h1>
         <p className="repository-card-description">{description}</p>
         <ul className="repository-card-languages-list">
           {renderLanguagesList()}
