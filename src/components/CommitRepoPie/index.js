@@ -19,9 +19,9 @@ const CommitRepoPie = props => {
   const {repoCommitCount} = analysisData
   console.log(repoCommitCount)
 
-  const repoCommitData = Object.entries(
-    repoCommitCount,
-  ).map(([name, value]) => ({name, value}))
+  const repoCommitData = Object.entries(repoCommitCount).map(
+    ([name, value]) => ({name, value}),
+  )
 
   return (
     <div className="repo-container">

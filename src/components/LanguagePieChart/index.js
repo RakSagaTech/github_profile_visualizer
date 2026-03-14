@@ -5,9 +5,9 @@ const COLORS = ['#54CA76', '#31A4E6', '#F5C452', '#F2637F', '#9261F3']
 const LanguagePieChart = props => {
   const {analysisData} = props
   const {langRepoCount} = analysisData
-  const langRepoArray = Object.entries(
-    langRepoCount,
-  ).map(([language, count]) => ({language, count}))
+  const langRepoArray = Object.entries(langRepoCount).map(
+    ([language, count]) => ({language, count}),
+  )
   return (
     <PieChart width={400} height={300}>
       <Pie

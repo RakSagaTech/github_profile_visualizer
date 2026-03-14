@@ -5,9 +5,9 @@ const COLORS = ['#54CA76', '#31A4E6', '#F5C452', '#F2637F', '#9261F3']
 const CommitPieChart = props => {
   const {analysisData} = props
   const {langCommitCount} = analysisData
-  const langCommitData = Object.entries(
-    langCommitCount,
-  ).map(([language, count]) => ({language, count}))
+  const langCommitData = Object.entries(langCommitCount).map(
+    ([language, count]) => ({language, count}),
+  )
   return (
     <PieChart width={400} height={300}>
       <Pie

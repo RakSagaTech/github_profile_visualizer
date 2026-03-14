@@ -13,13 +13,8 @@ const backgroundColorList = [
 
 const RepositoryCard = props => {
   const {repositoriesDetails} = props
-  const {
-    name,
-    description,
-    languages,
-    stargazersCount,
-    forksCount,
-  } = repositoriesDetails
+  const {name, description, languages, stargazersCount, forksCount} =
+    repositoriesDetails
   const renderLanguagesList = () =>
     languages.map((eachLanguage, index) => (
       <li

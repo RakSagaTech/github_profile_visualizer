@@ -36,12 +36,11 @@
   }
 }
 
-
 .repo-item {
   display: flex;
   align-items: center;
   margin-bottom: 6px;
-  color: var(--repo-color); 
+  color: var(--repo-color);
 }
 
 .color-box {
@@ -50,5 +49,5 @@
   display: inline-block;
   margin-right: 8px;
   border-radius: 2px;
-  background-color: var(--repo-color); 
+  background-color: var(--repo-color);
 }

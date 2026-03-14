@@ -22,6 +22,13 @@ class Home extends Component {
     profileData: {},
   }
 
+  componentDidMount() {
+    const savedUsername = localStorage.getItem('username')
+    if (savedUsername) {
+      this.setState({username: savedUsername}, this.fetchProfileData)
+    }
+  }
+
   getProfileData = data => ({
     avatarUrl: data.avatar_url,
     bio: data.bio,
